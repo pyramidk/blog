@@ -1,8 +1,10 @@
-<template>
-  <div>{{ data }}</div>
+<template lang="pug">
+  span {{ data }}
 </template>
 
 <script>
+import * as aTypes from '@/store/action-types'
+
 export default {
   name: 'HelloWorld',
   data () {
@@ -13,6 +15,9 @@ export default {
     data () {
       return this.$store.state.blog.data
     }
+  },
+  mounted () {
+    this.$store.dispatch(aTypes.GET_BLOG)
   }
 }
 </script>
