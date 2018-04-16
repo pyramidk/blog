@@ -1,14 +1,13 @@
 <template lang="pug">
   div.blog__home
-    h1.blog__home-title 首页样式
+    div.blog__home-title {{ title }}
     span.blog__home-line
     div.blog__home-intro
       span(
-        class="home-intro-line"
-      ) Récit d’une traversée en mer
-      span(
-        class="home-intro-line"
-      ) Récit d’une traversée en mer
+        v-for="(item, index) in introduction"
+        class="blog__home-intro-line"
+        :key="index"
+      ) {{ item }}
 </template>
 
 <style lang="stylus" scoped>
@@ -25,9 +24,10 @@
     bottom 0
     background #000
     opacity .5
-    z-index 2
+    z-index -1
+  .blog__home-title
   .blog__home-line:before
-    height 20px
+    height 40px
     content ''
     display block
     margin 0 auto
@@ -44,6 +44,12 @@ import * as aTypes from '@/store/action-types'
 export default {
   data () {
     return {
+      title: 'Hello Summer',
+      introduction: [
+        'Récit d’une traversée en mer',
+        'réalisée depuis le sud de la Bretagne',
+        'jusquau soleil des Canaries'
+      ]
     }
   },
   computed: {
