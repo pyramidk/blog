@@ -11,44 +11,47 @@
         loop
         src="/static/night.mp4"
       )
-    div.blog__home-container
-      div.blog__home-title {{ title }}
-      span.blog__home-line
-      div.blog__home-intro
-        span(
-          v-for="(item, index) in introduction"
-          class="blog__home-intro-line"
-          :key="index"
-          @click="setVideoDimensions"
-        ) {{ item }}
+      div(
+        v-show="videoLoaded"
+        class="blog__home-video-cover"
+      )
+      div.blog__home-overlay
+        div.blog__home-title {{ title }}
+        span.blog__home-line
+        div.blog__home-intro
+          span(
+            v-for="(item, index) in introduction"
+            class="blog__home-intro-line"
+            :key="index"
+            @click="setVideoDimensions"
+          ) {{ item }}
 </template>
 
 <style lang="stylus" scoped>
   .blog__home
     height 100%
     width 100%
-    display table
-    text-align center
-    color white
   .blog__home-video
     position relative
     width 100%
     height 100%
     overflow hidden
-  .blog__home-container
+  .blog__home-video-cover
+    position absolute
+    width 100%
+    height 100%
+    background url('/static/bg.jpg') no-repeat
+    background-size cover
+    background-position center
+  .blog__home-overlay
     display table-cell
     vertical-align middle
-  .blog__home:after
-    content ''
-    display block
     position absolute
     top 0
     left 0
-    right 0
+    right  0
     bottom 0
-    background #000
-    opacity .5
-    z-index -1
+    background rgba(0, 0, 0, 0.5)
   .blog__home-title
     font-size 40px
   .blog__home-line
@@ -83,7 +86,8 @@ export default {
         'Récit d’une traversée en mer',
         'réalisée depuis le sud de la Bretagne',
         'jusquau soleil des Canaries'
-      ]
+      ],
+      videoLoaded: true
     }
   },
   computed: {
@@ -94,7 +98,10 @@ export default {
   mounted () {
     this.$store.dispatch(aTypes.GET_BLOG)
     this.$nextTick(() => {
-      this.setVideoDimensions()
+      this.$refs.video.onloadedmetadata = this.setVideoDimensions
+      this.$refs.video.oncanplay = () => {
+        if (this.videoLoaded) this.videoLoaded = false
+      }
       window.onresize = () => {
         this.setVideoDimensions()
       }
@@ -124,7 +131,6 @@ export default {
 
       this.$refs.video.style.width = newWidth + 'px'
       this.$refs.video.style.height = newHeight + 'px'
-
     }
   }
 }
