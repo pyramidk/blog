@@ -36,6 +36,7 @@
     width 100%
     height 100%
     overflow hidden
+    box-sizing border-box
   .blog__home-video-cover
     position absolute
     width 100%
@@ -73,6 +74,7 @@
     top 50%
     left 50%
     transform translate(-50%, -50%)
+    object-fit cover // fix video全屏时的白边
 </style>
 
 <script>
