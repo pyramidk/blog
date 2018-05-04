@@ -1,20 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import BlogHome from '@/components/blog/BlogHome'
+import BlogVideo from '@/components/blog/BlogVideo'
+import Blog from '@/components/blog/Blog'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'BlogHome',
-      component: BlogHome
+      name: 'BlogVideo',
+      component: BlogVideo
     },
     {
-      path: '/',
-      name: 'BlogHome',
-      component: BlogHome
+      path: '/home',
+      name: 'Blog',
+      component: Blog
     }
   ]
 })

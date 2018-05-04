@@ -1,18 +1,17 @@
 <template lang="pug">
-  div.blog__home
+  div.blog__video
     Video
       template(slot="content")
         div {{ title }}
 </template>
 
 <style lang="stylus" scoped>
-  .blog__home
+  .blog__video
     height 100%
     width 100%
 </style>
 
 <script>
-// import * as aTypes from '@/store/action-types'
 import Video from '@/components/common/Video'
 
 export default {
@@ -27,7 +26,6 @@ export default {
   computed: {
   },
   mounted () {
-    // this.$store.dispatch(aTypes.GET_BLOG)
   },
   methods: {
   }
