@@ -4,8 +4,21 @@
     div.siderbar-title pyramid
     div.siderbar-navigation
       div.siderbar-navigation-item Home
-      div.siderbar-navigation-item Categories
-      div.siderbar-navigation-item Post Types
+      div(
+        v-for="item in sidebarItems"
+        class="siderbar-navigation-item"
+        :key="item.name"
+      )
+        Collapse(
+          v-if="item.isCollapse"
+          :title="item.title"
+        )
+          template(slot="items")
+            div.siderbar-navigation-subitem
+              span(
+                v-for="cItem in item.collapseItems"
+                :key="cItem.text"
+              ) {{ cItem.text }}
     div.siderbar-footer © 2018 Pyra All Rights Reserved.
 </template>
 
@@ -17,13 +30,25 @@
     width 220px
     height 100%
     padding  60px 40px 0
-    font-family 'Josefin Sans", Arial, sans-serif'
-    color #777
     border-right 1px solid #f0f0f0
   .siderbar-navigation
     margin-top 90px
   .siderbar-navigation-item
     margin-bottom 25px
+    color #777
+    cursor pointer
+    &:hover
+      color #000
+  .siderbar-navigation-subitem
+    padding 15px 0 0 9px
+    font-size 15px
+    span
+      display block
+      line-height 26px
+      color #777
+      cursor pointer
+      &:hover
+        color #000
   .siderbar-footer
     position fixed
     bottom 40px
@@ -32,7 +57,17 @@
 </style>
 
 <script>
-export default {
+import Collapse from '@/components/common/Collapse'
 
+export default {
+  props: {
+    sidebarItems: {
+      type: Array,
+      default: () => { return [] }
+    }
+  },
+  components: {
+    Collapse
+  }
 }
 </script>
