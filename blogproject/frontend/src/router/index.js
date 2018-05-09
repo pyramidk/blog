@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import BlogVideo from '@/components/blog/BlogVideo'
 import Blog from '@/components/blog/Blog'
+import BlogDetail from '@/components/blog/BlogDetail'
 
 Vue.use(Router)
 
@@ -17,6 +18,11 @@ export default new Router({
       path: '/home',
       name: 'Blog',
       component: Blog
+    },
+    {
+      path: '/detail/:id',
+      name: 'BlogDetail',
+      component: BlogDetail
     }
   ]
 })
