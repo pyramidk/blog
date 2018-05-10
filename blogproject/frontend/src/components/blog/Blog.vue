@@ -18,34 +18,18 @@
 </style>
 
 <script>
-import Sidebar from './Sidebar'
-import BlogContent from './BlogContent'
+import mixins from '@/components/blog/mixins'
+import Sidebar from '@/components/blog/Sidebar'
+import BlogContent from '@/components/blog/BlogContent'
+
 export default {
+  mixins: [mixins],
   components: {
     Sidebar,
     BlogContent
   },
   data () {
     return {
-      collapseData: [{
-        title: 'Categories',
-        name: '1',
-        isCollapse: true,
-        collapseItems: [{
-          text: 'Culture'
-        }, {
-          text: 'Video'
-        }]
-      }, {
-        title: 'PostTypes',
-        name: '2',
-        isCollapse: true,
-        collapseItems: [{
-          text: 'Qute'
-        }, {
-          text: 'Music'
-        }]
-      }]
     }
   },
   computed: {
