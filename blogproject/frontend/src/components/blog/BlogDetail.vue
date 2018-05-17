@@ -6,7 +6,8 @@
     div.blog__detail-contatiner
       div.blog__detail-title New Trendy Music of The Year
       div.blog__detail-meta lifeStyle-Apr 06, 2017
-      div.blog__detail-content 内容
+      div.blog__detail-content
+        VueMarkdown {{ blogData[0].body }}
 </template>
 
 <style lang="stylus" scoped>
@@ -25,14 +26,26 @@
 <script>
 import mixins from '@/components/blog/mixins'
 import Sidebar from '@/components/blog/Sidebar'
+import VueMarkdown from 'vue-markdown'
+import * as aTypes from '@/store/action-types'
+
 export default {
   mixins: [mixins],
   components: {
-    Sidebar
+    Sidebar,
+    VueMarkdown
   },
   data () {
     return {
     }
+  },
+  computed: {
+    blogData () {
+      return this.$store.state.blog.blogData
+    }
+  },
+  mounted () {
+    this.$store.dispatch(aTypes.GET_BLOG)
   }
 }
 </script>
