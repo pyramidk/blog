@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -14,8 +14,9 @@ def index (request):
     if request.method == 'GET':
         post = Post.objects.all().order_by('-created_time')
         serializer = PostSerializers(post, many=True)
-        print(serializer.data)
-        return Response(serializer.data)
+        print(serializer.data
+        # for non
+        return JsonResponse(serializer.data, safe=False)
 
 @api_view(['GET'])
 def category (request):
@@ -23,7 +24,7 @@ def category (request):
         category = Category.objects.all()
         serializer = CategorySerializers(category, many=True)
         print(serializer.data)
-        return Response(serializer.data)
+        return JsonResponse(serializer.data, safe=False)
 
 @api_view(['GET'])
 def tag (request):
@@ -31,4 +32,12 @@ def tag (request):
         tag = Tag.objects.all()
         serializer = TagSerializers(tag, many=True)
         print(serializer.data)
-        return Response(serializer.data)
+        return JsonResponse(serializer.data, safe=False)
+
+@api_view(['GET'])
+def detail (request, pk):
+    if request.method == 'GET':
+        post = Post.objects.get(pk=pk)
+        serializer = PostSerializers(post)
+        print(serializer.data)
+        return JsonResponse(serializer.data)
