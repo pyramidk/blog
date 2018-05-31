@@ -3,8 +3,8 @@
     div(
       class="blog__detail-contatiner markdown-body"
     )
-      div.blog__detail-title New Trendy Music of The Year
-      div.blog__detail-meta lifeStyle-Apr 06, 2017
+      div.blog__detail-title {{ blogData.title }}
+      div.blog__detail-meta {{ blogData.created_time }}
       div.blog__detail-content
         VueMarkdown(
           :source="blogData.body"
@@ -80,6 +80,9 @@ export default {
   computed: {
     blogData () {
       return this.$store.state.blog.blogData
+    },
+    blogId () {
+      return this.$route.params.id
     }
   },
   mounted () {
