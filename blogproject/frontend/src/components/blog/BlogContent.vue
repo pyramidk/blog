@@ -14,7 +14,7 @@
         div.blog__content-item-info
           div.blog__content-item-title {{ item.title }}
           div.blog__content-item-tag {{ item.created_time }}
-          div.blog__content-item-brief {{ item.brief }}
+          div.blog__content-item-brief {{ item.article_intro }}
           div(
             class="blog__content-item-more"
             @click="continueRead(item.id)"

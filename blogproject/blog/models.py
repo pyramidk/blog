@@ -24,6 +24,8 @@ class Tag (models.Model):
 class Post (models.Model):
     title = models.CharField(max_length=70)
     body = models.TextField()
+    img = models.CharField(max_length=200, blank=True)
+    article_intro = models.CharField(max_length=300, blank=True)
     created_time = models.DateField() 
     modified_time = models.DateField()
 

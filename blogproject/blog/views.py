@@ -14,7 +14,6 @@ def index (request):
     if request.method == 'GET':
         post = Post.objects.all().order_by('-created_time')
         serializer = PostSerializers(post, many=True)
-        print(serializer.data
         # for non
         return JsonResponse(serializer.data, safe=False)
 
@@ -39,5 +38,4 @@ def detail (request, pk):
     if request.method == 'GET':
         post = Post.objects.get(pk=pk)
         serializer = PostSerializers(post)
-        print(serializer.data)
         return JsonResponse(serializer.data)
