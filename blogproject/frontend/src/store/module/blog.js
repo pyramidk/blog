@@ -22,10 +22,10 @@ const actions = {
       }
     })
   },
-  [aTypes.GET_BLOG] ({ commit }) {
+  [aTypes.GET_BLOG] ({ commit }, { blogId }) {
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.get('/api/list/4')
+        const res = await axios.get(`/api/list/${blogId}`)
         if (res.status !== 200) return
         commit(mTypes.SET_BLOG_DETAIL, { data: res.data })
       } catch (err) {

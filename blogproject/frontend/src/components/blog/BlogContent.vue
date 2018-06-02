@@ -2,29 +2,23 @@
 <template lang="pug">
   div.blog__content-padding
     div.blog__content
-      div.blog__content-item
+      div(
+        v-for="item in blogs"
+        class="blog__content-item"
+        :key="item.id"
+      )
         img(
           class="blog__content-item-img"
-          src="https://victorthemes.com/themes/seil/wp-content/uploads/2017/06/post1.png"
+          :src="item.img"
         )
         div.blog__content-item-info
-          div.blog__content-item-title Wooden House
-          div.blog__content-item-tag Music -July 5, 2017
-          div.blog__content-item-brief Podcasting operational change the main management inside of workflows  super  framework.
+          div.blog__content-item-title {{ item.title }}
+          div.blog__content-item-tag {{ item.created_time }}
+          div.blog__content-item-brief {{ item.brief }}
           div(
             class="blog__content-item-more"
-            @click="continueRead"
+            @click="continueRead(item.id)"
           ) Continue Reading
-      div.blog__content-item
-        img(
-          class="blog__content-item-img"
-          src="https://victorthemes.com/themes/seil/wp-content/uploads/2017/06/post16.png"
-        )
-        div.blog__content-item-info
-          div.blog__content-item-title Wooden House
-          div.blog__content-item-tag Music -July 5, 2017
-          div.blog__content-item-brief Podcasting operational change the main management inside of workflows  super  framework.
-          div.blog__content-item-more Continue Readin
 </template>
 
 <style lang="stylus" scoped>
@@ -59,18 +53,28 @@
 
 <script>
 import Masonry from 'masonry-layout'
+import * as aTypes from '@/store/action-types'
+
 export default {
   mounted () {
-    const a = new Masonry('.blog__content', {
-      itemSelector: '.blog__content-item'
-    })
-    console.log(a)
+    this.$store.dispatch(aTypes.GET_BLOG_LIST)
+      .then(() => {
+        return new Masonry('.blog__content', {
+          itemSelector: '.blog__content-item'
+        })
+      })
+  },
+  computed: {
+    blogs () {
+      return this.$store.state.blog.blogs
+    }
   },
   methods: {
-    continueRead () {
+    continueRead (blogId) {
       this.$router.push({
-        path: '/detail/1'
+        path: `/detail/${blogId}`
       })
+      this.$store.dispatch(aTypes.GET_BLOG, { blogId })
     }
   }
 
