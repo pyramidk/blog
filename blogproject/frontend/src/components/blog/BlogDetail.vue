@@ -67,7 +67,8 @@
 <script>
 import mixins from '@/components/blog/mixins'
 import VueMarkdown from 'vue-markdown'
-// import * as aTypes from '@/store/action-types'
+import * as aTypes from '@/store/action-types'
+
 export default {
   mixins: [mixins],
   components: {
@@ -86,6 +87,9 @@ export default {
     }
   },
   mounted () {
+    this.$store.dispatch(aTypes.GET_BLOG, {
+      blogId: this.blogId
+    })
   },
   methods: {
   }

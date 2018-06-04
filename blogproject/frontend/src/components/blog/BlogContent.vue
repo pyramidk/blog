@@ -74,7 +74,6 @@ export default {
       this.$router.push({
         path: `/detail/${blogId}`
       })
-      this.$store.dispatch(aTypes.GET_BLOG, { blogId })
     }
   }
 

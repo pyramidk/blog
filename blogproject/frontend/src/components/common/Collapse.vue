@@ -5,6 +5,7 @@
       :class="{ isActive: 'active' }"
       @click="toggle"
     ) {{ title }}
+      span.collapse-icon {{ icon }}
     transition(
       name="collapse",
       @beforeEnter="beforeEnter"
@@ -22,6 +23,9 @@
 <style lang="stylus" scoped>
   .collapse-controller
     height 20px
+  .collapse-icon
+    margin-left 6px
+    font-size 13px
   .collapse-item-wrapper
     overflow-y hidden
     transition 0.3s height ease-in-out
@@ -36,6 +40,11 @@ export default {
   data () {
     return {
       isActive: false
+    }
+  },
+  computed: {
+    icon () {
+      return this.isActive ? '-' : '+'
     }
   },
   methods: {

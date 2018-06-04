@@ -1,9 +1,12 @@
 
 <template lang="pug">
   div.siderbar
-    div.siderbar-title pyramid
+    img(
+      class="siderbar-logo"
+      src="/static/logo.PNG"
+    )
     div.siderbar-navigation
-      div.siderbar-navigation-item Home
+      div.siderbar-navigation-item
       div(
         v-for="item in sidebarItems"
         class="siderbar-navigation-item"
@@ -19,7 +22,7 @@
                 v-for="cItem in item.collapseItems"
                 :key="cItem.text"
               ) {{ cItem.text }}
-    div.siderbar-footer © 2018 Pyra All Rights Reserved.
+    div.siderbar-footer © 2018 Pyramidk
 </template>
 
 <style lang="stylus" scoped>
