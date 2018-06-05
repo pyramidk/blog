@@ -20,8 +20,8 @@
             div.siderbar-navigation-subitem
               span(
                 v-for="cItem in item.collapseItems"
-                :key="cItem.text"
-              ) {{ cItem.text }}
+                :key="cItem.id"
+              ) {{ cItem.name }}
     div.siderbar-footer © 2018 Pyramidk
 </template>
 

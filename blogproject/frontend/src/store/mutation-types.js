@@ -1,2 +1,5 @@
 export const SET_BLOGS = 'SET_BLOGS'
 export const SET_BLOG_DETAIL = 'SET_BLOG_DETAIL'
+export const SET_BLOG_TAGS = 'SET_BLOG_TAGS'
+export const SET_BLOG_CATEGORIES = 'SET_BLOG_CATEGORIES'
+export const SET_LOADING = 'SET_LOADING'

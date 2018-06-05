@@ -1,24 +1,30 @@
 export default {
   data () {
     return {
-      collapseData: [{
-        title: 'Categories',
+    }
+  },
+  computed: {
+    state () {
+      return this.$store.state.blog
+    },
+    tags () {
+      console.log(this.state.tags)
+      return this.state.tags
+    },
+    categories () {
+      return this.state.categories
+    },
+    collapseData () {
+      return [{
+        title: '分类',
         name: '1',
         isCollapse: true,
-        collapseItems: [{
-          text: 'Culture'
-        }, {
-          text: 'Video'
-        }]
+        collapseItems: this.categories
       }, {
-        title: 'PostTypes',
+        title: '标签',
         name: '2',
         isCollapse: true,
-        collapseItems: [{
-          text: 'Qute'
-        }, {
-          text: 'Music'
-        }]
+        collapseItems: this.tags
       }]
     }
   }

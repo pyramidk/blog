@@ -57,7 +57,7 @@ import * as aTypes from '@/store/action-types'
 
 export default {
   mounted () {
-    this.$store.dispatch(aTypes.GET_BLOG_LIST)
+    this.$store.dispatch(aTypes.GET_ALL_CONTENT_DATA)
       .then(() => {
         return new Masonry('.blog__content', {
           itemSelector: '.blog__content-item'

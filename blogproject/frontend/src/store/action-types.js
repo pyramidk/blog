@@ -1,2 +1,5 @@
 export const GET_BLOG_LIST = 'GET_BLOG_LIST'
 export const GET_BLOG = 'GET_BLOG'
+export const GET_BLOG_TAGS = 'GET_BLOG_TAGS'
+export const GET_BLOG_CATEGORIES = 'GET_BLOG_CATEGORIES'
+export const GET_ALL_CONTENT_DATA = 'GET_ALL_CONTENT_DATA'
