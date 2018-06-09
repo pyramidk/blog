@@ -13,7 +13,7 @@ class Video {
     })
   }
 
-  init (video) {
+  init () {
     this._setStyle(this.container, {
       'position': 'relative',
       'width': '100%',
@@ -28,9 +28,6 @@ class Video {
       'transform': 'translate(-50%, -50%)',
       'object-fit': 'cover' // fix the white space around video when fullscreen
     })
-
-    this.video = video
-    this.update()
   }
 
   update () {
