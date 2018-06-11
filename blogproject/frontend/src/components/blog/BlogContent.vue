@@ -54,15 +54,19 @@
 <script>
 import Masonry from 'masonry-layout'
 import * as aTypes from '@/store/action-types'
+import imagesLoaded from 'imagesloaded'
 
 export default {
   mounted () {
     this.$store.dispatch(aTypes.GET_ALL_CONTENT_DATA)
-      .then(() => {
-        return new Masonry('.blog__content', {
-          itemSelector: '.blog__content-item'
-        })
+  },
+  updated () {
+    // generate layout when img loaded
+    imagesLoaded('.blog__content', () => {
+      return new Masonry('.blog__content', {
+        itemSelector: '.blog__content-item'
       })
+    })
   },
   computed: {
     blogs () {
