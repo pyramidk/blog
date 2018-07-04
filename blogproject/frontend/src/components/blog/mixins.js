@@ -8,7 +8,6 @@ export default {
       return this.$store.state.blog
     },
     tags () {
-      console.log(this.state.tags)
       return this.state.tags
     },
     categories () {

@@ -12,10 +12,15 @@
 </template>
 
 <style lang="stylus" scoped>
+  .blog__detail
+    background #f0f0f0
+    height 100%
   .blog__detail-contatiner
     max-width 700px
     margin 0 auto
-    padding 60px 30px 50px
+    padding 0px 30px
+    background #fff
+    height 100%
   .blog__detail-title
     margin-bottom 45px
     font-size 26px
