@@ -22,7 +22,7 @@
     background #fff
     height 100%
   .blog__detail-title
-    margin-bottom 45px
+    padding 30px 0
     font-size 26px
     font-weight 400
     letter-spacing 1px

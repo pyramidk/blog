@@ -22,17 +22,17 @@
 
 <style lang="stylus" scoped>
   .video-container
-    // position relative
-    // width 100%
-    // height 100%
-    // overflow hidden
-    // box-sizing border-box
+    position relative
+    width 100%
+    height 100%
+    overflow hidden
+    box-sizing border-box
   .video
-    // position absolute
-    // top 50%
-    // left 50%
-    // transform translate(-50%, -50%)
-    // object-fit cover // fix the white space around video when fullscreen
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    object-fit cover // fix the white space around video when fullscreen
   .video-cover
     position absolute
     width 100%
@@ -72,7 +72,6 @@ export default {
     })
     this.videoObject.init()
     this.$nextTick(() => {
-      this.videoObject.load(this.$refs.video)
       // create video instance when the video loaded
       this.$refs.video.onloadedmetadata = () => {
         this.videoObject.update()
